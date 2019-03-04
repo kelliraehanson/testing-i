@@ -22,8 +22,28 @@ function success(item) {
 }
 
 function fail(item) {
-    
-}
+    if(item.type === 'armor') {
+        if(item.enhancement < 5) {
+            return 'You cannot fail, your enhancement is too low.'
+ } else {
+     if(item.enhancement >= 5 && item.enhancement <= 14) {
+         item.durability = item.durability -5;
+         return item;
+     }
+ }
+    } else if(item.type === 'weapon') {
+        if(item.enhancement < 7) {
+        return 'You cannot fail, your enhancement is too low.'
+        } else {
+            if(item.enhancement >= 5 && item.enhancement <= 14) {
+                item.durability = item.durability -5;
+                return item; 
+        } else {
+            item.durability = item.durability -10;
+         return item;
+        }
+    }   
+}}
 
 function repair(item) {
     return {...item, durability: 100};
